@@ -1,6 +1,10 @@
-# Getting Started with Create React App
+# Acast Assessment
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## Notes
+
+In the interest of time, planning to use a library that implements a wrapper around the HTML5 audio tag to handle basic playback controls. 
 
 ## Available Scripts
 
