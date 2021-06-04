@@ -1,19 +1,19 @@
-import React from "react";
-import { Theme, createStyles, makeStyles, useTheme } from "@material-ui/core/styles";
+import React, { useState } from "react";
+import { Theme, createStyles, makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import "react-h5-audio-player/lib/styles.css";
 import { EpisodeResponseItem } from "models/episode";
 import AudioPlayer from "react-h5-audio-player";
+import CardMedia from "@material-ui/core/CardMedia";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
-      display: "flex",
-      justifyContent: "center",
       minHeight: "60%",
       width: "80%",
+      display: "flex",
     },
     details: {
       display: "flex",
@@ -47,7 +47,12 @@ export interface EpisodePlayerProps {
 
 const EpisodePlayer = ({ episodeData }: EpisodePlayerProps) => {
   const classes = useStyles();
-  const theme = useTheme();
+  const [count, setCount] = useState("0");
+  const milliToSeconds = (ms: number) => (ms / 1000).toFixed(1);
+  const handleMarkerUpdates = (event: Event) => {
+    const convervtedTimestamp = milliToSeconds(event.timeStamp);
+    setCount(convervtedTimestamp);
+  };
 
   return (
     <Card className={classes.root}>
@@ -61,9 +66,15 @@ const EpisodePlayer = ({ episodeData }: EpisodePlayerProps) => {
           <AudioPlayer
             autoPlayAfterSrcChange={false}
             src={`http://localhost:1337${episodeData?.audio}`}
+            onListen={handleMarkerUpdates}
           />
         </div>
       </div>
+      <CardMedia
+        className={classes.cover}
+        image="http://localhost:1337/images/image01.jpg"
+        title="Live from space album cover"
+      />
     </Card>
   );
 };

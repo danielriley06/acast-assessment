@@ -33,7 +33,15 @@ const EpisodesContainer: React.FC<EpisodesContainerProps> = ({ episodesService }
           currentEpisode={currentEpisodes.context.currentEpisode}
         />
       </div>
-      <div style={{ flex: 1, height: "100%" }}>
+      <div
+        style={{
+          flex: 1,
+          height: "100%",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
         {isEpisodeSelected && (
           <EpisodePlayer episodeData={currentEpisodes.context.currentEpisode} />
         )}

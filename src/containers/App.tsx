@@ -1,8 +1,10 @@
 import { useMachine } from "@xstate/react";
 import { episodesMachine } from "machines/episodesMachine";
+import AppBar from "@material-ui/core/AppBar";
 import React from "react";
 import { Switch, Route, Link } from "react-router-dom";
 import { interpret } from "xstate";
+import Toolbar from "@material-ui/core/Toolbar";
 import Home from "../components/Home";
 import "./App.css";
 import EpisodesContainer from "./EpisodesContainer";
@@ -16,16 +18,13 @@ const App: React.FC = () => {
 
   return (
     <div className="App">
-      <ul>
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/episodes">Episodes</Link>
-        </li>
-      </ul>
-
-      <hr />
+      <AppBar position="static">
+        <Toolbar>
+          <Link to="/episodes" style={{ color: "#FFFFFF", textDecoration: "none" }}>
+            Episodes
+          </Link>
+        </Toolbar>
+      </AppBar>
 
       <Switch>
         <Route exact path="/">
