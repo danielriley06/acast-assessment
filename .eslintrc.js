@@ -23,10 +23,15 @@ module.exports = {
     },
     ecmaVersion: 2018,
     sourceType: "module",
-    project: "./tsconfig.json",
+    // eslint-disable-next-line prettier/prettier
+    project: './tsconfig.json',
   },
   rules: {
     "linebreak-style": "off",
+    "import/prefer-default-export": "off",
+    "no-param-reassign": ["error", { props: false }],
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "react/prop-types": "off",
     "prettier/prettier": [
       "error",
       {
